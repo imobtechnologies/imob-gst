@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * A Magento 2 module named Imob/Gst
+ * Copyright (C) 2020 iMob Technologies. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Sales\Model\Order\Pdf\AbstractPdf">
+        <plugin disabled="false" name="gstPrintOnPDF" sortOrder="10"
+                type="Imob\Gst\Plugin\Magento\Sales\Model\Order\Pdf\AbstractPdf"/>
+    </type>
+    <type name="Magento\Tax\Api\TaxCalculationInterface">
+        <plugin name="gstTaxCalculation" type="Imob\Gst\Plugin\Magento\Tax\TaxCalculationPlugin" sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Magento\Catalog\Model\Category\DataProvider">
+        <plugin disabled="false" name="showHideGstConfigurationTab" sortOrder="20"
+                type="Imob\Gst\Plugin\Magento\Catalog\Model\Category\DataProvider"/>
+    </type>
+    <type name="Magento\Tax\Model\Sales\Total\Quote\CommonTaxCollector">
+        <plugin disabled="false" name="Imob_Gst_Plugin_Magento_Tax_Model_Sales_Total_Quote_CommonTaxCollector"
+                sortOrder="10" type="Imob\Gst\Plugin\Magento\Tax\Model\Sales\Total\Quote\CommonTaxCollector"/>
+    </type>
+    <preference for="Magento\Tax\Model\Calculation\AbstractCalculator" type="Imob\Gst\Model\Calculation\GstCalculator"/>
+    <preference for="Magento\Tax\Model\Calculation" type="Imob\Gst\Model\Calculation"/>
+    <preference for="Magento\Tax\Model\Calculation\CalculatorFactory"
+                type="Imob\Gst\Model\Calculation\CalculatorFactory"/>
+    <preference for="Magento\Tax\Model\ResourceModel\Calculation" type="Imob\Gst\Model\ResourceModel\Calculation"/>
+</config>

@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * A Magento 2 module named Imob/Gst
+ * Copyright (C) 2020 iMob Technologies. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="imob" translate="label" sortOrder="200">
+            <label>iMob</label>
+        </tab>
+        <section id="gst" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>GST</label>
+            <tab>imob</tab>
+            <resource>Imob_Gst::config_imob_gst</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>General Configuration</label>
+                <field id="enabled" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="10" translate="label"
+                       type="select">
+                    <label>Enable</label>
+                    <comment/>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="gstin" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="20" translate="label"
+                       type="text">
+                    <label>GSTIN</label>
+                    <comment/>
+                </field>
+                <field id="cin" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="30" translate="label"
+                       type="text">
+                    <label>CIN</label>
+                    <comment/>
+                </field>
+                <field id="pan" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="40" translate="label"
+                       type="text">
+                    <label>PAN</label>
+                    <comment/>
+                </field>
+                <field id="cal_type" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="50"
+                       translate="label" type="select">
+                    <label>GST Calculation Type</label>
+                    <comment>Select GST calculation type as per your requirements. Global will apply same GST on all
+                        items in store, Category will allow to apply GST rate for each category.
+                    </comment>
+                    <source_model>\Imob\Gst\Model\Config\Source\Caltype</source_model>
+                </field>
+                <field id="default_global" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="60"
+                       translate="label" type="text">
+                    <label>Global GST rate</label>
+                    <depends>
+                        <field id="gst/general/cal_type">0</field>
+                    </depends>
+                    <comment>Please add GST percent rate.</comment>
+                </field>
+                <field id="default_category" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="60"
+                       translate="label" type="text">
+                    <label>Category GST rate</label>
+                    <depends>
+                        <field id="gst/general/cal_type">1</field>
+                    </depends>
+                    <comment>You can add GST rate for each category in category section. If GST rate is not defined in
+                        any category, above rate will be used.
+                    </comment>
+                </field>
+                <field id="origin" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="70" translate="label"
+                       type="select">
+                    <label>Origin State</label>
+                    <comment>Select your business origin state</comment>
+                    <source_model>Imob\Gst\Model\Config\Source\IndStates</source_model>
+                </field>
+                <field id="gstin_pdf" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="80"
+                       translate="label" type="select">
+                    <label>Show GSTIN on transactional PDFs</label>
+                    <comment>Enabling will display GSTIN number on order, invoice and shipment PDFs.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

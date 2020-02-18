@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * A Magento 2 module named Imob/Gst
+ * Copyright (C) 2020 iMob Technologies. All rights reserved.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="imob_gst" sortOrder="50">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">GST Configuration</label>
+        </settings>
+        <field name="cat_gst_rate">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">Imob\Gst\Model\Config\Source\GstRate</item>
+				<item name="config" xsi:type="array">
+					<item name="required" xsi:type="boolean">false</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+					<item name="sortOrder" xsi:type="number">10</item>
+					<item name="dataType" xsi:type="string">int</item>
+					<item name="formElement" xsi:type="string">select</item>
+					<item name="label" translate="true" xsi:type="string">GST Rate</item>
+				</item>
+			</argument>
+            <settings>
+                <imports>
+                    <link name="disabled">${ $.provider }:data.hide_gst_configuration</link>
+                </imports>
+            </settings>
+		</field>
+    </fieldset>
+</form>
