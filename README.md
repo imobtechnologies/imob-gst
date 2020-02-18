@@ -6,7 +6,7 @@
 - There are three methods you can configure GST rate calculation
     - Global : allows to add a single GST rate on all items in store
     - Category based : allows to add separate GST rate for each category
-    - Product based : allows to add separate GST rate for each product
+    - Product based : allows to add separate GST rate for each product (Requires Pro Version)
 - GST will be applied on all taxable items, non taxable items will not be included with tax calculation
 - Bifurcation of tax rates will be displayed on cart page, checkout page and order details page
 - Allows to add GSTIN to transactional PDF documents like invoice, shipment and credit memo
@@ -22,8 +22,3 @@
  - GST Calculation Type : Select GST calculation as per your requirements
  - Origin State : Select business origin state. This will be used to bifurcate SGST+CGST and IGST rates
  - Show GSTIN on PDF : Add/Remove GSTIN from transactional documents
-
-## Attributes
-
- - Category - cat_gst_rate (cat_gst_rate)
-
